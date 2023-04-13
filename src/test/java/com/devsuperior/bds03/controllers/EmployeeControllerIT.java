@@ -40,9 +40,9 @@ public class EmployeeControllerIT {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		operatorUsername = "ana@gmail.com";
+		operatorUsername = "alex@gmail.com";
 		operatorPassword = "123456";
-		adminUsername = "bob@gmail.com";
+		adminUsername = "maria@gmail.com";
 		adminPassword = "123456";
 	}
 	
