@@ -1,6 +1,5 @@
 package com.devsuperior.bds03.config;
 
-import com.devsuperior.bds03.components.JwtTokenEnhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -29,8 +28,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Value("${jwt.duration}")
     private Integer jwtDuration;
     @Autowired
-    private JwtTokenEnhancer tokenEnhancer;
-    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private JwtAccessTokenConverter accessTokenConverter;
@@ -55,11 +52,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        TokenEnhancerChain chain = new TokenEnhancerChain();
-        chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
+
         endpoints.authenticationManager(authenticationManager)
                 .tokenStore(tokenStore)
-                .accessTokenConverter(accessTokenConverter)
-                .tokenEnhancer(chain);
+                .accessTokenConverter(accessTokenConverter);
     }
 }

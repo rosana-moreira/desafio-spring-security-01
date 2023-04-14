@@ -4,60 +4,67 @@ import java.io.Serializable;
 
 import com.devsuperior.bds03.entities.Employee;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class EmployeeDTO implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	private Long id;
-	private String name;
-	private String email;
-	private Long departmentId;
-	
-	public EmployeeDTO() {
-	}
+    private static final long serialVersionUID = 1L;
 
-	public EmployeeDTO(Long id, String name, String email, Long departmentId) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.departmentId = departmentId;
-	}
+    private Long id;
+    @NotBlank(message = "Campo requerido")
+    private String name;
+    @Email(message = "Email inválido")
+    private String email;
+    @NotNull(message = "Campo requerido")
+    private Long departmentId;
 
-	public EmployeeDTO(Employee entity) {
-		id = entity.getId();
-		name = entity.getName();
-		email = entity.getEmail();
-		departmentId = entity.getDepartment().getId();
-	}
+    public EmployeeDTO() {
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public EmployeeDTO(Long id, String name, String email, Long departmentId) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.departmentId = departmentId;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public EmployeeDTO(Employee entity) {
+        id = entity.getId();
+        name = entity.getName();
+        email = entity.getEmail();
+        departmentId = entity.getDepartment().getId();
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Long getDepartmentId() {
-		return departmentId;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
 }

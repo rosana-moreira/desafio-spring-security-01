@@ -11,7 +11,6 @@ import com.devsuperior.bds03.repositories.RoleRepository;
 import com.devsuperior.bds03.repositories.UserRepository;
 import com.devsuperior.bds03.services.exceptions.DatabaseException;
 import com.devsuperior.bds03.services.exceptions.ResourceNotFoundException;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -88,8 +87,6 @@ public class UserService implements UserDetailsService {
     }
 
     private void copyDtoEntity(UserDTO dto, User entity) {
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
         entity.setEmail(dto.getEmail());
 
         entity.getRoles().clear();
